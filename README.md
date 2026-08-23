@@ -1,6 +1,6 @@
 # 🚀 Flutter State Management Lab
 
-A hands-on sandbox project dedicated to exploring, comparing, and mastering different state management architectures in Flutter.
+A hands-on sandbox project maintained by **[laiba](https://github.com/laibanurr)** dedicated to exploring, comparing, and mastering different state management architectures in Flutter.
 
 ## 📌 Featured State Managers
 
@@ -11,11 +11,13 @@ A hands-on sandbox project dedicated to exploring, comparing, and mastering diff
 
 ## 📂 Architecture & Directory Layout
 
-Each approach follows a clean presentation-logic-data separation to reflect real-world app structure:
+This project follows a clean `data -> logic -> presentation` architecture inside `lib/src/`:
 
 ```text
-lib/src/
-├── bloc/       # Event-driven BLoC implementation
-├── cubit/      # Simplified Cubit implementation
-├── provider/   # ChangeNotifier & Provider implementation
-└── riverpod/   # Riverpod 2.x Notifier & Provider implementation
+lib/
+├── main.dart
+└── src/
+    ├── bloc/       # Event-driven BLoC implementation
+    ├── cubit/      # Simplified Cubit implementation
+    ├── provider/   # ChangeNotifier & Provider implementation
+    └── riverpod/   # Riverpod Notifier & Provider implementation
