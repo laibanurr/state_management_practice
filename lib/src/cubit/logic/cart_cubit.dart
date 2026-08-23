@@ -16,8 +16,9 @@ class CartCubit extends Cubit<CartState> {
     } else {
       emit(state.copyWith(items: [...state.items, item]));
     }
+  }
     void removeItem(String id) {
       emit(state.copyWith(items: state.items.where((item) => item.id != id).toList()));
     }
   }
-}
+
