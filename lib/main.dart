@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:state_management/src/cubit/logic/cart_cubit.dart';
+import 'package:state_management/src/cubit/presentation/screens/bloc_listener_screen.dart';
 import 'package:state_management/src/cubit/presentation/screens/cart_screen_cubit.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // Fixed the missing 'ColorScheme' keyword typo here
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const CartScreenCubit(),
+      home: const BlocListenerScreen(),
     );
   }
 }
