@@ -1,17 +1,25 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:state_management/src/cubit/logic/cart_cubit.dart';
-import 'package:state_management/src/cubit/presentation/screens/bloc_listener_screen.dart';
-import 'package:state_management/src/cubit/presentation/screens/cart_screen_cubit.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:state_management/src/cubit/hydrated_cubit/cart_cubit_02.dart';
+import 'package:state_management/src/cubit/hydrated_cubit/screens/cart_cubit_screen_02.dart';
 
-void main() {
-  runApp(
-    // Wrapping the whole app ensures MyCart can see the same CartCubit instance!
-    BlocProvider(
-      create: (context) => CartCubit(),
-      child: const MyApp(),
-    ),
+void main() async {
+  // 1. Ensure Flutter binding is initialized
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // 2. Get the application storage directory
+  final Directory directory = await getApplicationDocumentsDirectory();
+
+  // 3. Initialize and assign storage globally to HydratedBloc
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: HydratedStorageDirectory(directory.path),
   );
+
+  // 4. Run the app
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,14 +27,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'StateMANAGEMENT',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // Fixed the missing 'ColorScheme' keyword typo here
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    return BlocProvider<CartCubit2>(
+      create: (context) => CartCubit2(),
+      child: MaterialApp(
+        title: 'StateMANAGEMENT',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
+        home: const CartScreenCubit(),
       ),
-      home: const BlocListenerScreen(),
     );
   }
 }
