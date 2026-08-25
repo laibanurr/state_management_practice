@@ -11,3 +11,5 @@ class DislikeTheJokeEvent extends JokeEvent {
   final JokeData jokeData;
   DislikeTheJokeEvent(this.jokeData);
 }
+class NextJokeEvent extends JokeEvent{}
+class PrevJokeEvent extends JokeEvent{}
