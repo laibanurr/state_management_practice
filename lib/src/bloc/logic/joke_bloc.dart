@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:state_management/src/bloc/data/models/joke_data.dart';
+import 'package:state_management/src/bloc/data/repositories/joke_repo.dart';
 import 'package:state_management/src/bloc/logic/event_class.dart';
 import 'package:state_management/src/bloc/logic/joke_state.dart';
 
@@ -12,11 +12,25 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
       }
     }));
     on<DislikeTheJokeEvent>((event, emit) {
-      emit(state.copyWith(
-        jokeData: state.jokeData
-            .where((joke) => joke != event.jokeData)
-            .toList(),
-      ));
+      emit(
+        state.copyWith(
+          jokeData: state.jokeData
+              .where((joke) => joke != event.jokeData)
+              .toList(),
+        ),
+      );
+    });
+    on<NextJokeEvent>((event, emit) {
+      final totalJokeCount = JokeRepo().getJokes().length;
+      final nextIndex = (state.currentJokeIndex + 1) % totalJokeCount;
+      emit(state.copyWith(currentJokeIndex: nextIndex));
+    });
+
+    on<PrevJokeEvent>((event, emit) {
+      final totalJokeCount = JokeRepo().getJokes().length;
+      final prevIndex =
+          (state.currentJokeIndex - 1 + totalJokeCount) % totalJokeCount;
+      emit(state.copyWith(currentJokeIndex: prevIndex));
     });
   }
 }
