@@ -45,7 +45,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:state_management/src/bloc/logic/joke_bloc.dart';
-import 'package:state_management/src/bloc/presentation/screens/joke_dispo_screen.dart'; // Import your new Bloc
+import 'package:state_management/src/bloc/presentation/screens/joke_dispo_screen.dart';
+import 'package:state_management/src/bloc/presentation/screens/joke_screen_with_container.dart'; // Import your new Bloc
 
 void main() {
   runApp(const MyApp());
@@ -67,7 +68,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         // 2. Set your joke listing screen as the home page
-        home: const JokeDisplayScreen()
+        home: const JokeScreenWithContainer()
       ),
     );
   }
