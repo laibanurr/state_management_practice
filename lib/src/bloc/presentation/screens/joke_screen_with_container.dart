@@ -4,6 +4,7 @@ import 'package:state_management/src/bloc/data/repositories/joke_repo.dart';
 import 'package:state_management/src/bloc/logic/event_class.dart';
 import 'package:state_management/src/bloc/logic/joke_bloc.dart';
 import 'package:state_management/src/bloc/logic/joke_state.dart';
+import 'package:state_management/src/bloc/presentation/screens/my_fav.dart';
 
 class JokeScreenWithContainer extends StatelessWidget {
   const JokeScreenWithContainer({super.key});
@@ -12,6 +13,25 @@ class JokeScreenWithContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final allJokes = JokeRepo().getJokes();
     return Scaffold(
+      appBar: AppBar(
+  title: const Text('JOKE SWIPER 🃏'),
+  backgroundColor: Colors.amber,
+  centerTitle: true,
+    actions: [
+    // NEW: Navigation icon button to see favorites
+    IconButton(
+      icon: const Icon(Icons.bookmark_added, color: Colors.black87),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const FavoritesScreen()),
+        );
+      },
+    ),
+  ],
+),
+
+
       body: BlocBuilder<JokeBloc, JokeState>(
         builder: (context, state){
           final currentJoke = allJokes[state.currentJokeIndex];
