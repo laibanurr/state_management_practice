@@ -59,26 +59,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Bloc
-    // return BlocProvider<JokeBloc>(
-    //   // 1. Initialize your JokeBloc here so the entire app can access it
-    //   create: (context) => JokeBloc(),
-    //MULTI BLOC PROVIDER
-
-      return MaterialApp(
-        title: 'MULTI BLOCK PROVIDER',
+    return BlocProvider<JokeBloc>(
+      create: (context) => JokeBloc(),
+      child: MaterialApp(
+        title: 'jokessss',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
           useMaterial3: true,
         ),
-        // 2. Set your joke listing screen as the home page
-        home: MultiBlocProvider(providers: [
-          BlocProvider<JokeBloc>(create: (context)=> JokeBloc()),
-          BlocProvider<CartCubit>(create: (context)=> CartCubit())
-        ], child: HomeTabsScreen())
-      );
-  
+        home: JokeScreenWithContainer(),
+      ),
+    );
   }
 }
 
