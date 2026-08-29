@@ -44,6 +44,8 @@
 //BLOC 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:state_management/bloc_dio_practice/src/features/jokes/logic/live_joke_bloc.dart';
+import 'package:state_management/bloc_dio_practice/src/features/jokes/presentation/live_okes_dispo.dart';
 import 'package:state_management/src/bloc/MultiBloc/home_tab.dart';
 import 'package:state_management/src/bloc/logic/joke_bloc.dart';
 import 'package:state_management/src/bloc/presentation/screens/joke_dispo_screen.dart';
@@ -59,8 +61,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<JokeBloc>(
-      create: (context) => JokeBloc(),
+    return BlocProvider<NewJokeBloc>(
+      create: (context) => NewJokeBloc(),
       child: MaterialApp(
         title: 'jokessss',
         debugShowCheckedModeBanner: false,
@@ -68,7 +70,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
           useMaterial3: true,
         ),
-        home: JokeScreenWithContainer(),
+        home: LiveJokeScreen(),
       ),
     );
   }
