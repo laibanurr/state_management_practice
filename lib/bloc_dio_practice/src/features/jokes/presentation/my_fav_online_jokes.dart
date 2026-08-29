@@ -5,8 +5,8 @@ import 'package:state_management/bloc_dio_practice/src/features/jokes/logic/live
 import 'package:state_management/bloc_dio_practice/src/features/jokes/logic/live_joke_state.dart';
 
 
-class FavoritesScreen extends StatelessWidget {
-  const FavoritesScreen({super.key});
+class FavoritesScreen2 extends StatelessWidget {
+  const FavoritesScreen2({super.key});
 
   @override
   Widget build(BuildContext context) {
