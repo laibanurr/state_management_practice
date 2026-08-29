@@ -16,7 +16,7 @@ class NewJokeBloc extends Bloc<LiveJokeEvent, LiveJokeState> {
       emit(JokeLoadingState()); // Instantly forces the UI to show the spinning wheel
       try {
         // Calls your Dio method inside the repository
-        final jokesFromServer = await _apiRepository.fetchOnlinejokes();
+        final jokesFromServer = await _apiRepository.fetchOnlineJokes();
         
         // Emits success state carrying the fresh web jokes array list
         emit(JokeLoadedState(onlineJokes: jokesFromServer)); 
