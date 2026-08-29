@@ -4,6 +4,7 @@ import 'package:state_management/bloc_dio_practice/src/features/jokes/data/live_
 import 'package:state_management/bloc_dio_practice/src/features/jokes/logic/live_joke_bloc.dart';
 import 'package:state_management/bloc_dio_practice/src/features/jokes/logic/live_joke_event.dart';
 import 'package:state_management/bloc_dio_practice/src/features/jokes/logic/live_joke_state.dart';
+import 'package:state_management/bloc_dio_practice/src/features/jokes/presentation/my_fav_online_jokes.dart';
 import 'package:state_management/src/bloc/data/models/joke_data.dart';
 import 'package:state_management/src/bloc/logic/joke_bloc.dart';
 import 'package:state_management/src/bloc/presentation/screens/my_fav.dart';
@@ -35,7 +36,7 @@ class _LiveJokeScreenState extends State<LiveJokeScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const FavoritesScreen()),
+                MaterialPageRoute(builder: (context) => const FavoritesScreen2()),
               );
             },
           )
